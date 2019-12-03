@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='dublincoreresource',
             name='language',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='language_resources', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'iso639-2', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='language_resources', to='controlled_vocabulary.ControlledTerm'),
         ),
     ]

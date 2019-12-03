@@ -16,8 +16,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DublinCoreRights',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('shorthand', models.CharField(blank=True, default='', max_length=50)),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
+                ('shorthand', models.CharField(
+                    blank=True, default='', max_length=50)),
                 ('statement', models.TextField()),
             ],
         ),
@@ -29,17 +31,20 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='dublincoreresource',
             name='format',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'format', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
         ),
         migrations.AddField(
             model_name='dublincoreresource',
             name='spatial',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'geonames', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
         ),
         migrations.AddField(
             model_name='dublincoreresource',
             name='subject',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'wikidata', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
         ),
         migrations.AddField(
             model_name='dublincoreresource',
@@ -49,7 +54,8 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='dublincoreresource',
             name='language',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'iso639-2', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
         ),
         migrations.AlterField(
             model_name='dublincoreresource',
@@ -59,11 +65,13 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='dublincoreresource',
             name='type',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'dmcitype', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='controlled_vocabulary.ControlledTerm'),
         ),
         migrations.AddField(
             model_name='dublincoreresource',
             name='rights',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='resources', to='dublincore_resource.DublinCoreRights'),
+            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL,
+                                    related_name='resources', to='dublincore_resource.DublinCoreRights'),
         ),
     ]

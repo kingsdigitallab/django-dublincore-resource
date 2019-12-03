@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='dublincoreresource',
             name='type',
-            field=controlled_vocabulary.models.ControlledTermField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='typed_resources', to='controlled_vocabulary.ControlledTerm'),
+            field=controlled_vocabulary.models.ControlledTermField(
+                'dcmitype', blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='typed_resources', to='controlled_vocabulary.ControlledTerm'),
         ),
     ]

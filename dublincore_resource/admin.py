@@ -2,9 +2,7 @@ from django.contrib import admin
 from .models import DublinCoreResource, DublinCoreAgent, DublinCoreRights
 from django import forms
 from controlled_vocabulary.models import ControlledTermWidget
-# from controlled_vocabulary.models import ControlledTerm
 
-# TODO: move this to CT package
 # TODO: define a ControlledTermField which this widget by default
 
 

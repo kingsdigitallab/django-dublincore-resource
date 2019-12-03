@@ -57,73 +57,91 @@ class AbstractDublinCoreResource(models.Model):
 
     '''
     identifier = models.CharField(
-        max_length=LENGTH_LABEL, **FIELD_OPTIONAL
+        max_length=LENGTH_LABEL, **FIELD_OPTIONAL,
+        help_text='''A code or URL that uniquely identifies the resource within a referencial system. It should be compact, widely recognised and as stable as possible (i.e. it will never change in the future). e.g. ISBN:1-56592-149-6'''
     )
-    title = models.CharField(max_length=300)
-    date = models.CharField(max_length=LENGTH_DATE, **FIELD_OPTIONAL)
+    title = models.CharField(
+        max_length=300,
+        help_text='''A name given to the resource.'''
+    )
+    date = models.CharField(
+        max_length=LENGTH_DATE,
+        help_text='''The point or period in time the resource was created or made available. Not necessarily the same as 'temporal' column (see below).''',
+        **FIELD_OPTIONAL
+    )
+    bibliographic_citation = models.TextField(
+        help_text='''A bibliographic reference for the resource.''',
+        ** FIELD_OPTIONAL
+    )
+
+    # agents
     creators = models.ManyToManyField(
         DublinCoreAgent,
         blank=True,
-        related_name='created_resources'
+        related_name='created_resources',
+        help_text='''The person or organization primarily responsible for creating the intellectual content of the resource.'''
     )
     contributors = models.ManyToManyField(
         DublinCoreAgent,
         blank=True,
-        related_name='contributed_resources'
+        related_name='contributed_resources',
+        help_text='''A person or organization not specified in a Creator element who has made significant intellectual contributions to the resource but whose contribution is secondary to any person or organization specified in a Creator element'''
     )
     publisher = models.ForeignKey(
         DublinCoreAgent,
         null=True, blank=True,
         on_delete=models.SET_NULL,
         related_name='published_resources',
+        help_text='''An entity responsible for making the resource available.'''
     )
+
     rights = models.ForeignKey(
         DublinCoreRights,
         null=True, blank=True,
         on_delete=models.SET_NULL,
         related_name='resources',
+        help_text='''A rights management statement, an identifier that links to a rights management statement, or an identifier that links to a service providing information about rights management for the resource.'''
     )
+
+    # content description
     # TODO: multivalued
-    subject = ControlledTermField(
-        'controlled_vocabulary.ControlledTerm',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-    description = models.TextField(**FIELD_OPTIONAL)
-    spatial = ControlledTermField(
-        'controlled_vocabulary.ControlledTerm',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-    temporal = models.CharField(max_length=LENGTH_LABEL, **FIELD_OPTIONAL)
-    type = ControlledTermField(
-        'controlled_vocabulary.ControlledTerm',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-    language = ControlledTermField(
-        'controlled_vocabulary.ControlledTerm',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
-    )
-    bibliographic_citation = models.TextField(
+    description = models.TextField(
+        help_text='''An account of the resource (e.g. abstract, summary). One or more sentences.''',
         **FIELD_OPTIONAL
     )
+    subject = ControlledTermField(
+        '', null=True, blank=True,
+        help_text='''The topic of the resource.'''
+    )
+    spatial = ControlledTermField(
+        'geonames', null=True, blank=True,
+        help_text='''The location or geographic scope of the resource's content.'''
+    )
+    temporal = models.CharField(
+        max_length=LENGTH_LABEL, **FIELD_OPTIONAL,
+        help_text='''The date or period in history the resource refers to.'''
+    )
+    language = ControlledTermField(
+        'iso639-2', null=True, blank=True,
+        help_text='''The primary language of the resource.'''
+    )
+
+    # type and formats
+    type = ControlledTermField(
+        'dcmitype', null=True, blank=True,
+        help_text='''The nature or genre of the resource.'''
+    )
     format = ControlledTermField(
-        'controlled_vocabulary.ControlledTerm',
-        null=True, blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+',
+        'format', null=True, blank=True,
+        help_text='''The physical or digital manifestation of the resource.'''
     )
     # TODO: add this field
     # source = models.CharField(max_length=200)
 
     # NON DC fields:
-    attachment = models.FileField(upload_to=get_upload_path, **FIELD_OPTIONAL)
+    attachment = models.FileField(
+        upload_to=get_upload_path, **FIELD_OPTIONAL
+    )
 
     class Meta:
         abstract = True
