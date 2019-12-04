@@ -110,7 +110,7 @@ class AbstractDublinCoreResource(models.Model):
         **FIELD_OPTIONAL
     )
     subject = ControlledTermField(
-        '', null=True, blank=True,
+        'dcmitype', null=True, blank=True,
         help_text='''The topic of the resource.'''
     )
     spatial = ControlledTermField(

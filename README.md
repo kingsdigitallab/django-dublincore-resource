@@ -27,6 +27,7 @@ Most DC elements accepts only a single value to keep things simple.
 * [TODO] support for file attachment
 * [TODO] support for geonames
 * [TODO] support for bibliographic citation parsin
+* [TODO] support for EDTF dates
 
 # Set up
 
