@@ -110,11 +110,11 @@ class AbstractDublinCoreResource(models.Model):
         **FIELD_OPTIONAL
     )
     subject = ControlledTermField(
-        'dcmitype', null=True, blank=True,
+        'fast-topic', null=True, blank=True,
         help_text='''The topic of the resource.'''
     )
     spatial = ControlledTermField(
-        'geonames', null=True, blank=True,
+        'wikidata', null=True, blank=True,
         help_text='''The location or geographic scope of the resource's content.'''
     )
     temporal = models.CharField(
@@ -132,7 +132,7 @@ class AbstractDublinCoreResource(models.Model):
         help_text='''The nature or genre of the resource.'''
     )
     format = ControlledTermField(
-        'format', null=True, blank=True,
+        'mime', null=True, blank=True,
         help_text='''The physical or digital manifestation of the resource.'''
     )
     # TODO: add this field
