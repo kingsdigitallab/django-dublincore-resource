@@ -2,8 +2,7 @@ from django.contrib import admin
 from .models import DublinCoreResource, DublinCoreAgent, DublinCoreRights
 from django import forms
 from controlled_vocabulary.models import ControlledTermWidget
-
-# TODO: define a ControlledTermField which this widget by default
+from .settings import get_var
 
 
 @admin.register(DublinCoreAgent)
@@ -16,8 +15,7 @@ class DublinCoreRightsAdmin(admin.ModelAdmin):
     search_fields = ['shorthand']
 
 
-@admin.register(DublinCoreResource)
-class DublinCoreResource(admin.ModelAdmin):
+class DublinCoreResourceAdmin(admin.ModelAdmin):
 
     list_display = ['id', 'title', 'date', 'type']
     list_display_links = ['id', 'title']
@@ -46,3 +44,7 @@ class DublinCoreResource(admin.ModelAdmin):
             'fields': ('rights',)
         }),
     )
+
+
+if not get_var('ABSTRACT_ONLY'):
+    admin.site.register(DublinCoreResource, DublinCoreResourceAdmin)

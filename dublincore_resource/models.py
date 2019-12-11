@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from .settings import get_var
 from controlled_vocabulary.models import (
     ControlledTermField, ControlledTermsField
 )
@@ -7,22 +8,14 @@ from controlled_vocabulary.models import (
 LENGTH_LABEL = 200
 LENGTH_DATE = 30
 LENGTH_IDENTIFIER = 50
-# TODO: make that a config setting
-LOCAL_VOCABULARY_BASE_URL = 'http://localhost:8000/vocabularies'
 
 FIELD_OPTIONAL = dict(blank=True, null=False, default='')
-DUBLINCORE_RESOURCE_ABSTRACT_ONLY = getattr(
-    settings, 'DUBLINCORE_RESOURCE_ABSTRACT_ONLY', False)
-DUBLINCORE_RESOURCE_UPLOAD_PATH = getattr(
-    settings, 'DUBLINCORE_RESOURCE_UPLOAD_PATH',
-    'uploads/dublin_core/'
-)
 
 
 def get_upload_path(instance, filename):
     # TODO: increase counter to avoid overwriting file with same name
     ret = '{}/{}'.format(
-        DUBLINCORE_RESOURCE_UPLOAD_PATH.rstrip('/'),
+        get_var('UPLOAD_PATH').rstrip('/'),
         filename
     )
     return ret
@@ -218,6 +211,6 @@ class AbstractDublinCoreResource(models.Model):
         return ret
 
 
-if not DUBLINCORE_RESOURCE_ABSTRACT_ONLY:
+if not get_var('ABSTRACT_ONLY'):
     class DublinCoreResource(AbstractDublinCoreResource):
         pass
