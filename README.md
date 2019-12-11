@@ -1,7 +1,7 @@
 # Django Dublin Core Resource
 
 A Django model and admin interface to manage metadata about your resources
-using Dublin Core (DC) standard.
+using [standard Dublin Core (DC) schema](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/).
 
 The approach taken by this app is to centralise all your resource metadata
 into a single table.
