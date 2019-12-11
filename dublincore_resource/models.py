@@ -155,7 +155,7 @@ class AbstractDublinCoreResource(models.Model):
     )
     # dc:subject
     subjects = ControlledTermsField(
-        'fast-topic', null=True, blank=True,
+        'fast-topic', blank=True,
         help_text='''The topic of the resource.'''
     )
     # dc:coverage
@@ -177,7 +177,7 @@ class AbstractDublinCoreResource(models.Model):
     )
     # dc:language
     languages = ControlledTermsField(
-        'iso639-2', null=True, blank=True,
+        'iso639-2', blank=True,
         help_text='''The primary language of the resource.'''
     )
 
