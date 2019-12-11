@@ -16,33 +16,13 @@ class DublinCoreRightsAdmin(admin.ModelAdmin):
     search_fields = ['shorthand']
 
 
-# class DublinCoreResourceAdminForm(forms.ModelForm):
-#     class Meta:
-#         model = DublinCoreResource
-#         fields = ['title', 'type', 'language', 'identifier', 'description',
-#                   'creators', 'contributors', 'publisher']
-#         widgets = {
-#             'language': ControlledTermWidget(
-#                 DublinCoreResource.language.field.remote_field,
-#                 admin.site,
-#                 'iso639-2'
-#             ),
-#             'type': ControlledTermWidget(
-#                 DublinCoreResource.type.field.remote_field,
-#                 admin.site,
-#                 'dcmitype'
-#             )
-#         }
-
-
 @admin.register(DublinCoreResource)
 class DublinCoreResource(admin.ModelAdmin):
-    # form = DublinCoreResourceAdminForm
 
     list_display = ['id', 'title', 'date', 'type']
     list_display_links = ['id', 'title']
     search_fields = ['identifier', 'title', 'description']
-    list_filter = ['type', 'language']
+    list_filter = ['type', 'languages']
 
     autocomplete_fields = ['creators', 'contributors', 'publisher', 'rights']
 
@@ -56,8 +36,8 @@ class DublinCoreResource(admin.ModelAdmin):
             'fields': ('creators', 'contributors', 'publisher')
         }),
         ('Content', {
-            'fields': ('description', 'subject', 'spatial', 'temporal',
-                       'language')
+            'fields': ('description', 'subjects', 'spatial', 'temporal',
+                       'languages')
         }),
         ('Type & format', {
             'fields': ('type', 'format')
