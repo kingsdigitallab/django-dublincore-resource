@@ -31,13 +31,14 @@ into a single table.
 * Lookup values into authority lists / controlled vocabularies
 * Inline description of all fields
 * Extensible model
+* [TODO] optional integration with Wagtail Image gallery and Documents
 * [TODO] smart bulk import/update from CSV
 * [TODO] advanced input validations
 * [TODO] API / export into various standard formats
 * [TODO] support for file attachment / upload
 * [TODO] support for bibliographic citation parsing / extraction
 * [TODO] support for [EDTF dates](https://pypi.org/project/edtf/)
-* [TODO] use CC schema for the rights
+* [TODO] use Creative Commons [best practices](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution) and [schema](https://creativecommons.org/ns#) for the rights
 
 # Set up
 
