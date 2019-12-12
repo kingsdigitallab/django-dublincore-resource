@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-dublincore-resource"
-version = "0.1.0"
+version = "0.1.1"
 description = "Describe your resources with a Dublin Core schema"
 authors = ["geoffroy-noel-ddh <geoffroy.noel@kcl.ac.uk>"]
 license = "MIT"
@@ -10,7 +10,7 @@ repository = "https://github.com/kingsdigitallab/django-dublincore-resource"
 keywords = ["dublin-core", "controlled-vocabulary", "linked-data", "vocabulary", "metadata"]
 classifiers = [
   "Environment :: Web Environment",
-  "Framework :: Django",
+  "Framework :: Django :: 2.2",
   "Operating System :: OS Independent",
 ]
 include = [
@@ -22,6 +22,8 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.5"
+django = "^2.2"
+django-controlled-vocabulary = ">=2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"

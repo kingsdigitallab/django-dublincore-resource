@@ -26,8 +26,7 @@ Most DC elements accepts only a single value to keep things simple.
 
 * One centralised table for all your resource
 * Standard Dublin Core elements/fields
-* Easy lookup into authority lists / controlled vocabularies
-* Possible to use values from standard controlled vocabularies
+* Lookup values into authority lists / controlled vocabularies
 * Extensible model
 * [TODO] smart bulk import/update from CSV
 * [TODO] advanced input validations
