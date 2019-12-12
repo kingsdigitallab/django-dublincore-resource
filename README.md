@@ -14,8 +14,8 @@ into a single table.
 
 * AbstractDublinCoreResource
   * an abstract Django Model that replicate the Dublin Core schema
-  * each DC element is represented by a field
-  * some DC terms are also included
+  * each [DC element](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-3) (dc:) is represented by a field
+  * some [DC terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-2) (dcterms:) are also included
   * makes use of ControlledTermField for links to controlled vocabularies
 * DublinCoreResource
   * inherit from AbstractDublinCoreResource
@@ -36,7 +36,7 @@ into a single table.
 * [TODO] API / export into various standard formats
 * [TODO] support for file attachment / upload
 * [TODO] support for bibliographic citation parsing / extraction
-* [TODO] support for EDTF dates
+* [TODO] support for [EDTF dates](https://pypi.org/project/edtf/)
 * [TODO] use CC schema for the rights
 
 # Set up
