@@ -8,6 +8,10 @@ into a single table.
 
 Most DC elements accepts only a single value to keep things simple.
 
+<p align="center">
+  <img src="docs/img/resource-change-1.png" height="400">
+</p>
+
 # Data Models
 
 * AbstractDublinCoreResource
@@ -27,6 +31,7 @@ Most DC elements accepts only a single value to keep things simple.
 * One centralised table for all your resource
 * Standard Dublin Core elements/fields
 * Lookup values into authority lists / controlled vocabularies
+* Inline description of all fields
 * Extensible model
 * [TODO] smart bulk import/update from CSV
 * [TODO] advanced input validations
