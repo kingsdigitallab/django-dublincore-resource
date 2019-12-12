@@ -6,8 +6,6 @@ using [standard Dublin Core (DC) schema](https://www.dublincore.org/specificatio
 The approach taken by this app is to centralise all your resource metadata
 into a single table.
 
-Most DC elements accepts only a single value to keep things simple.
-
 <p align="center">
   <img src="docs/img/resource-change-1.png" height="400">
 </p>
