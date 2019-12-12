@@ -28,7 +28,8 @@ class DublinCoreResourceAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Identification', {
-            'fields': ('identifier', 'title', 'date', 'bibliographic_citation')
+            'fields': ('identifier', 'title', 'date', 'issued', 'is_part_of',
+                       'bibliographic_citation')
         }),
         ('Agents', {
             'fields': ('creators', 'contributors', 'publisher')
