@@ -2,7 +2,7 @@ from django.conf import settings
 import os
 
 '''
-Default settings for the controlled_vocabulary app
+Default settings for the dublincore-resource app
 All settings variables can be overridden in your django project settings.py
 '''
 
