@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-dublincore-resource"
-version = "0.1.1"
+version = "0.1.2"
 description = "Describe your resources with a Dublin Core schema"
 authors = ["geoffroy-noel-ddh <geoffroy.noel@kcl.ac.uk>"]
 license = "MIT"
@@ -23,7 +23,7 @@ packages = [
 [tool.poetry.dependencies]
 python = "^3.5"
 django = "^2.2"
-django-controlled-vocabulary = ">=2.0"
+django-controlled-vocabulary = "<2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.0"
