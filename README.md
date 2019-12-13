@@ -44,9 +44,25 @@ into a single table.
 
 ## Installation
 
+First [install django-controlled-vocabulary](https://github.com/kingsdigitallab/django-controlled-vocabulary#setup).
+
+Then install the django-dublincore-resource app:
+
 ```
 pip install django-dublincore-resource
 ```
+
+Add the app to the INSTALLED_APPS list in your Django settings.py file:
+
+```
+INSTALLED_APPS = [
+    ...
+    'dublincore_resource',
+    ...
+]
+```
+
+Run the schema migrations:
 
 ```
 ./manage.py migrate
