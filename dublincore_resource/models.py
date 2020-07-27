@@ -6,6 +6,7 @@ from controlled_vocabulary.models import (
 )
 
 LENGTH_LABEL = 200
+LENGTH_LABEL_LONG = 500
 LENGTH_DATE = 30
 LENGTH_IDENTIFIER = 50
 
@@ -24,10 +25,10 @@ def get_upload_path(instance, filename):
 class DublinCoreAgent(models.Model):
     '''A person or an association'''
     full_name = models.CharField(
-        max_length=200
+        max_length=LENGTH_LABEL
     )
     identifier = models.URLField(
-        max_length=300, **FIELD_OPTIONAL
+        max_length=LENGTH_LABEL_LONG, **FIELD_OPTIONAL
     )
 
     def __str__(self):
@@ -77,7 +78,7 @@ class AbstractDublinCoreResource(models.Model):
     )
     # dc:title
     title = models.CharField(
-        max_length=300,
+        max_length=LENGTH_LABEL_LONG,
         help_text='''A name given to the resource.'''
     )
     # dc:date
